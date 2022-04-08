@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
 Vue.use(VueRouter)
 
 const routes = [
+  //로그인 화면
   {
     path: '/login',
     name: 'login',
@@ -11,11 +13,12 @@ const routes = [
       return import('../views/LoginView.vue')
     }
   },
+  //글목록 페이지
   {
-    path: '/',
-    name: 'board',
-    component: function () {
-      return import('../views/BoardView.vue')
+    path : '/board',
+    name : 'board',
+    component : function(){
+      return import("../views/BoardView.vue")
     },
     children : [
       {
@@ -23,15 +26,18 @@ const routes = [
         component : function(){
           return import("../components/PageComponent.vue");
         }
-      },
-      {
-        path : ':name',
-        component : function(){
-          return import("../components/PageComponent");
-        }
       }
     ]
   },
+  //메인페이지
+  {
+    path: '/',
+    name: 'board',
+    component: function () {
+      return import('../views/BoardView.vue')
+    }
+  },
+  //유저 정보
   {
     path: '/user/:user',
     name: 'user',

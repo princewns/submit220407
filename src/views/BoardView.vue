@@ -1,13 +1,12 @@
 <template>
-    <div id="board">
+    <div class="board">
         <h1>게시글 목록입니다.</h1>
+        <!--페이지 이동을 위한 링크-->
         <a v-for="n in num" :key="n">
-            <router-link :to="`/${n}`">{{n}}</router-link> |
+            <router-link :to="`/board/${n}`">{{n}}</router-link> |
         </a>
-        <p v-for="i in memo" :key="i">
-            {{i.memo}}
-        </p>
-        <router-view></router-view>
+        <!--페이지 동적 라우팅-->
+        <router-view />
     </div>
 </template>
 
@@ -17,8 +16,12 @@ import dataJson from "@/assets/data.json"
 export default {
     name : 'BoardView',
     data : ()=>({
-        num : dataJson.board.length,
-        memo : dataJson.board
+        num : dataJson.board.length
     })
 }
 </script>
+
+<style scoped>
+/*scoped를 사용하면 현재의 뷰에서만 css가 적용 */
+
+</style>
